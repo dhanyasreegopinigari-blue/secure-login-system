@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login - Setup 2FA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="brand-bar">
+        <a href="{{ url_for('dashboard') }}">Secure Login System</a>
+    </div>
+
+    <div class="container">
+        {% if enabled %}
+            <h2>Two-Factor Authentication Enabled</h2>
+            <p class="subtitle">Your account is already protected with 2FA.</p>
+            <a class="button-link" href="{{ url_for('disable_2fa') }}">Disable 2FA</a>
+        {% else %}
+            <h2>Enable Two-Factor Authentication</h2>
+            <p class="subtitle">Scan the QR code below or enter this secret into your authenticator app.</p>
+            <div class="qr-card">
+                <img src="{{ qr_code_url }}" alt="2FA QR code">
+            </div>
+            <div class="secret-block">
+                <strong>Secret:</strong>
+                <p class="secret-value">{{ otp_secret }}</p>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <input type="text" name="token" placeholder="Enter 6-digit code" autofocus required>
+                <button type="submit">Verify and Enable 2FA</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

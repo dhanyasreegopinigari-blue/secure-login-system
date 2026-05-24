@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="brand-bar">
+        <a href="{{ url_for('dashboard') }}">Secure Login System</a>
+    </div>
+
+    <div class="container">
+        <h1>Welcome, {{ username }}</h1>
+        <p class="subtitle">You are logged in securely with session protection enabled.</p>
+
+        <div class="status-card">
+            <p>Two-Factor Authentication:</p>
+            {% if current_user.two_factor_enabled %}
+                <strong class="status-enabled">Enabled</strong>
+                <a class="action-link" href="{{ url_for('disable_2fa') }}">Disable 2FA</a>
+            {% else %}
+                <strong class="status-disabled">Not enabled</strong>
+                <a class="action-link" href="{{ url_for('setup_2fa') }}">Enable 2FA</a>
+            {% endif %}
+        </div>
+
+        <a class="button-link" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+</body>
+</html>
