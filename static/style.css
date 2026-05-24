@@ -145,16 +145,6 @@ button:hover,
     border: 1px solid rgba(56, 189, 248, 0.32);
 }
 
-@media (max-width: 540px) {
-    .page-shell {
-        padding: 22px 14px 32px;
-    }
-
-    .container {
-        padding: 28px;
-    }
-}
-
 .status-card {
     padding: 18px 20px;
     border-radius: 20px;
@@ -206,4 +196,14 @@ button:hover,
     background: rgba(255, 255, 255, 0.06);
     color: #e2e8f0;
     word-break: break-all;
+}
+
+@media (max-width: 540px) {
+    .page-shell {
+        padding: 22px 14px 32px;
+    }
+
+    .container {
+        padding: 28px;
+    }
 }
