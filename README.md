@@ -12,6 +12,10 @@ https://secure-login-system-7kh1.onrender.com/login
 A secure authentication web application developed using Flask that provides user registration, login, logout, password hashing, session management, and protection against common web vulnerabilities such as SQL Injection.
 
 ---
+##Screenshots✨
+[Dashboard]
+<img width="1080" height="2277" alt="secure login sysytem image" src="https://github.com/user-attachments/assets/e40f6928-e51a-4332-9aa4-b14ca2ab2418" />
+
 
 ## Project Overview🎐
 
